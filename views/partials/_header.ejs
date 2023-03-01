@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<link rel="icon" type="image/x-icon" href="image/vscode.png">
+	<title>
+		<%= title %>
+	</title>
+</head>
+
+<body>
+	<nav>
+		<div class="ctn-nav">
+			<div class="logo-nav">
+				<img width="30px" src="/image/vscode.png" alt=""> <span><b>vscode</b></span>
+			</div>
+			<div class="menu">
+				<a href="/">Home</a>
+				<a href="#">About</a>
+				<% if (session.userid) { %>
+				<a class="hover" href="/logout">
+					<i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+				</a>
+				<% } else { %>
+				<a class="hover" href="#" onclick="openScreenLogin()">
+					<i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+				</a>
+				<% } %>
+			</div>
+		</div>
+	</nav>
+
+	<% if (error != "") { %>
+		<div class="alert" id="alert"><%= error %></div>
+	<% } %>
+
+	<% if (session.message) { %>
+		<div class="alert" id="alert"><%= session.message %></div>
+		<% session.message = null; %>
+	<% } %>

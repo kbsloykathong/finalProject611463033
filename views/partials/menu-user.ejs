@@ -1,0 +1,25 @@
+<div class="menu-user">
+	<div class="sd-box">
+		<div class="profile-menu-user">
+			<% if (session.userid) { %>
+				<div class="img-box">
+					<img src="/uploads/<%= session.image %>" alt="">
+				</div>
+				<span>
+					<p>my Profile ..</p>
+					<hr>
+					<p>Name : <label><%= session.name %></label></p>
+					<p>userID : <label>@<%= session.userid %></label></p>
+					<p>Phone : <label><%= session.phone %></label></p>
+					<span>
+						<a class="edit" href="/edituser">แก้ไข</a>
+						<a class="delete" href="/delete/<%= session.iduser %>">ลบ</a>
+					</span>
+				</span>
+
+			<% } else { %>
+				<a href="#" onclick="openScreenLogin()">เข้าสู่ระบบก่อน</a>
+			<% } %>
+		</div>
+	</div>
+</div>

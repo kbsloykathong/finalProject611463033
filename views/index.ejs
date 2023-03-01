@@ -1,0 +1,72 @@
+<%- include("partials/_header") -%>
+
+<div class="container">
+  <br><br>
+
+  <br>
+
+  <div class="box">
+    <div class="box-container">
+      <!-- <center> -->
+      <% if (session.userid) { %>
+      <%- include("partials/menu-user") -%>
+      <% } %>
+      <% if (session.userid) {%>
+      <div class="content">
+        <% } else { %>
+        <div class="content" style="width: 100%;">
+          <% } %>
+          <div class="sd-box">
+            <div class="header-post">
+              <h2>Post ..
+                <% if (session.userid) {%>
+                <label class="content-label">
+                  <a class="edit" href="#" onclick="openScreenPost()"><i class="fa-solid fa-plus"></i>
+                    create
+                    post!
+                  </a>
+                </label>
+                <% } else { %>
+                <label class="content-label">
+                  <a class="edit" href="#" onclick="openScreenLogin()"><i class="fa-solid fa-plus"></i>
+                    create
+                    post!
+                  </a>
+                </label>
+                <% } %>
+              </h2>
+            </div>
+            <% post.forEach((post, index) => { %>
+            <div class="post-content-user">
+              <div class="profile-user">
+                <div class="img-div">
+                  <img src="uploads/<%= post.image %>" alt="">
+                </div>
+                <span>
+                  <p><%= post.name %> <label class="content-label"><%= post.postdate %></label>
+                  </p>
+                  <p class="post-title">
+                    Title : <%= post.title %>
+                    <% if (session.userid == post.username) { %>
+                    <!-- <label class="content-label">
+                      <a class="edit" href="/editpost/<%= post.idpost %>">แก้ไข</a>
+                      <a class="delete" href="">ลบ</a>
+                    </label> -->
+                    <% } %>
+                  </p>
+                  <p class="post-detail">
+                    <%= post.detail %>
+                  </p>
+                </span>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+        <!-- </center> -->
+      </div>
+    </div>
+
+  </div>
+
+  <%- include("partials/_footer") -%>
